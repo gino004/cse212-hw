@@ -12,7 +12,8 @@
 		queue.Enqueue(100);
 		var value = queue.Dequeue();
 		Console.WriteLine(value);
-		// Defect(s) Found:
+		// Defect(s) Found: Dequeue was using index 1 instead of index 0.
+		// The first item in the queue should be at index 0.
 
 		Console.WriteLine("------------");
 
@@ -30,7 +31,9 @@
 		Console.WriteLine(value);
 		value = queue.Dequeue();
 		Console.WriteLine(value);
-		// Defect(s) Found: 
+		// Defect(s) Found: Enqueue was inserting values at the beginning of the list
+		// instead of adding them to the end. Dequeue was also using index 1 instead
+		// of index 0. These defects caused the queue to return values in the wrong order.
 
 		Console.WriteLine("------------");
 
@@ -48,7 +51,8 @@
 		{
 			Console.WriteLine("I got the exception as expected.");
 		}
-		// Defect(s) Found: 
+		// Defect(s) Found:  No defect found. Dequeue correctly raises an
+		// IndexOutOfRangeException when the queue is empty.
 	}
 
 	private readonly List<int> _queue = new();
